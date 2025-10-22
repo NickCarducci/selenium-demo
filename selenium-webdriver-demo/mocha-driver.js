@@ -61,6 +61,6 @@ describe('Vote', () => {
         console.log("---");
 
         // Assuming count is initialCount + 1
-        assert.strictEqual(count, initialCount++, `ERROR from node.js assertion library: count total ${count} is not one more than it was (${initialCount}) before the vote`);
+        assert.strictEqual(Number(count), initialCount++, `ERROR from node.js assertion library: count total ${count} is not one more than it was (${initialCount}) before the vote`);
     });
 });
