@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vote for Dinner</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="container">
+    <nav class="navbar navbar-dark bg-primary mb-3">
+      <a class="navbar-brand" href="/">Vote</a>
+      <a class="navbar-brand" href="/results">Results</a>
+    </nav>
+    <h2><%= title %></h2>
+    <p>Pick one choice and "Cast your vote."</p>
+<form action="/cast" method="post">
+  <ul class="list-unstyled">
+    <% for (const [id, text] of Object.entries(Choices)) { %>
+      <li>
+        <label class="radio">
+          <input type="radio" name="vote" value="<%= id %>" id="vote_<%= id %>" />
+          <img src="/images/<%= id.toLowerCase() %>.jpg" width="50" height="50" />
+          <%= text %>
+        </label>
+      </li>
+    <% } %>
+  </ul>
+  <button type="submit" class="btn btn-primary">Cast this vote!</button>
+</form>
+  </body>
+</html>

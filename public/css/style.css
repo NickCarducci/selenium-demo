@@ -1,0 +1,6 @@
+.image {
+  position: relative;
+  left: -10px;
+  border: 10px;
+  border-color: blue;
+}

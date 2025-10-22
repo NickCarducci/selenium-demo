@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vote for Dinner</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="container">
+    <nav class="navbar navbar-dark bg-primary mb-3">
+      <a class="navbar-brand" href="/">Vote</a>
+      <a class="navbar-brand" href="/results">Results</a>
+    </nav>
+    <h2><%= title %></h2>
+    <p>
+  <img src="/images/<%= vote.toLowerCase() %>.jpg" width="50" height="50" />
+  <%= Choices[vote] %>
+</p>
+<form method="get" action="/results">
+  <button type="submit" class="btn btn-primary">See the Results</button>
+</form>
+  </body>
+</html>

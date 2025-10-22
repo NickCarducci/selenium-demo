@@ -1,0 +1,57 @@
+{
+  "name": "e2e-tests",
+  "version": "1.0.0",
+  "description": "selenium-webdriver demo",
+  "main": "index.js",
+  "keywords": [
+    "selenium",
+    "webdriver",
+    "tests",
+    "testing",
+    "debugging"
+  ],
+  "author": "Nick Carducci & Janvi Shah",
+  "scripts": {
+    "console": "node console-driver.js",
+    "report:generate:driver": "marge mochawesome-report/mocha-driver-report.json",
+    "report:generate:grid": "marge mochawesome-report/mocha-grid-report.json",
+    "report:merge": "mochawesome-merge \"mochawesome-report/*.json\" > mochawesome-report/merged-report.json",
+    "test": "mocha --reporter mochawesome --timeout 30000 --reporter-options reportDir=mochawesome-report,reportFilename=mocha-driver-report mocha-driver.js",
+    "grid": "mocha --reporter mochawesome --timeout 30000 --reporter-options reportDir=mochawesome-report,reportFilename=mocha-grid-report mocha-grid.js"
+  },
+  "dependencies": {
+    "chromedriver": "^141.0.4",
+    "mocha": "^11.7.4",
+    "mochawesome": "^2.0.5",
+    "mochawesome-merge": "^4.2.1",
+    "selenium-webdriver": "^4.37.0"
+  },
+  "@demo-instructions": [
+    "CONSOLE:",
+    "* /vite/ npm run dev",
+    "* [open new terminal >] cd selenium-webdriver-demo",
+    "* /selenium-webdriver/ npm run console (alternative: node console-driver.js)",
+    "REPORT:",
+    "cd ..",
+    "* /vite/ npm run dev",
+    "* [open new terminal >] cd selenium-webdriver-demo",
+    "* /mocha/ npm test",
+    "(optional-mochawesome) npm run report:merge",
+    "* /marge/ npm run report:generate:driver",
+    "CONSOLE",
+    "cd ..",
+    "* /vite/ npm run dev",
+    "* [open new terminal >] cd selenium-webdriver-demo",
+    "* /grid-hub/ java -jar selenium-server-<version>.jar hub",
+    "* /grid-node/ java -jar selenium-server-<version>.jar node --hub http://localhost:4444",
+    "* /mocha/ npm grid",
+    "(optional-mochawesome) npm run report:merge",
+    "* /marge/ npm run report:generate:grid"
+  ],
+  "@unused-scripts": [
+    "mocha --reporter mochawesome --require mochawesome-report-generator/lib/addContext --timeout 30000 mocha-grid.js",
+    "mocha --reporter mochawesome multiple-tests/**/*.js",
+    "mocha --reporter mochawesome --timeout 30000 --exit mocha-grid.js",
+    "marge mochawesome-report/merged-report.json"
+  ]
+}
