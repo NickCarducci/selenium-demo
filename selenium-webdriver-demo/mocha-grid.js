@@ -7,6 +7,8 @@ describe('Vote', () => {
         //Initialize
         driver = await new Builder().usingServer(GRID_URL).forBrowser('chrome').build();
         await driver.get('http://localhost:4567'); // VoteLab port
+
+        await driver.manage().setTimeouts({ implicit: 4000 });
     });
     after(async function () {
 

@@ -3,10 +3,12 @@ const { Builder, By, Key, until } = require('selenium-webdriver');
 describe('Vote', () => {
     let driver;
     before(async function () {
-    this.timeout(30000); // Increase timeout for Selenium operations
+        this.timeout(30000); // Increase timeout for Selenium operations
         // Or 'firefox' etc.
         driver = await new Builder().forBrowser('chrome').build();
         await driver.get('http://localhost:4567'); // VoteLab port
+
+        await driver.manage().setTimeouts({ implicit: 4000 });
     });
     after(async function () {
 

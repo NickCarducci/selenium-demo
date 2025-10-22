@@ -5,6 +5,7 @@ async function runTest() {
     let driver = await new Builder().forBrowser('chrome').build();
     // When you initialize the webdriver in the selenium-webdriver package,
     // Selenium Manager downloads the compatible WebDriver executable.
+    await driver.manage().setTimeouts({ implicit: 4000 });
 
     try {
         await driver.get('http://localhost:4567'); // VoteLab port
