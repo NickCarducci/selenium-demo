@@ -1,4 +1,5 @@
 const { Builder, By, Key, until } = require('selenium-webdriver');
+const assert = require('assert');
 
 describe('Vote', () => {
     let driver;
@@ -31,7 +32,7 @@ describe('Vote', () => {
         await resultsButton.click();
         const initialRowCount = await driver.findElement(By.xpath("//tr[th[text()='Hamberger']]/td"));
         // NEW
-        const initialCount = await initialRowCount.getText();
+        var initialCount = await initialRowCount.getText();
         console.log("the count before vote, for Hamberger:", initialCount);
 
         let homeButton = await driver.findElement(By.xpath("//a[text()='Vote']"));
@@ -55,10 +56,11 @@ describe('Vote', () => {
         const rowCount = await driver.findElement(By.xpath("//tr[th[text()='Hamberger']]/td"));
         // NEW
         const count = await rowCount.getText();
+        console.log("initial total:", initialCount);
         console.log("Hamberger vote total:", count);
         console.log("---");
 
         // Assuming count is initialCount + 1
-        assert.strictEqual(count, initialCount + 1, "ERROR from node.js assertion library: count total is not one more than it was before the vote");
+        assert.strictEqual(count, initialCount++, `ERROR from node.js assertion library: count total ${count} is not one more than it was (${initialCount}) before the vote`);
     });
 });
